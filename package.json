@@ -1,0 +1,22 @@
+{
+  "name": "fengshui.js",
+  "version": "1.0.0",
+  "description": "javascript lib for fengshui",
+  "main": "fengshui.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/l2yao/fengshui.js.git"
+  },
+  "keywords": [
+    "fengshui"
+  ],
+  "author": "Long Yao <yl1984108@gmail.com> (http://l2yao.github.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/l2yao/fengshui.js/issues"
+  },
+  "homepage": "https://github.com/l2yao/fengshui.js#readme"
+}
