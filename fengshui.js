@@ -54,16 +54,16 @@ module.exports = {
 	getMountainFromDirection: function(direction, dragon){
 		var mountain = direction_mountain[direction];
 		for (var index = 0 ; index < mountain.length; index++){
-			if(getDragon(mountain[index]) == dragon){
+			if(module.exports.getDragon(mountain[index]) == dragon){
 				return mountain[index];
 			}
 		}
 	},
 
 	getShunNi: function(mountain, star) {
-		var dragon = getDragon(mountain);
+		var dragon = module.exports.getDragon(mountain);
 		var direction = base_pan[star - 1];
-		var newMountain = getMountainFromDirection(direction, dragon);
+		var newMountain = module.exports.getMountainFromDirection(direction, dragon);
 		if(yang.indexOf(newMountain) >= 0){
 			return true;
 		}else{
@@ -90,13 +90,8 @@ module.exports = {
 		}
 	},
 
-	drawFeiXing: function(div, yun, shan, xiang) {
-		var pan = getPan(yun, true);
-
-		d3.select("svg").remove();
-		var svgContainer = d3.select(div).append("svg")
-                                 .attr("width", 450)
-                                 .attr("height", 450);
+	drawFeiXing: function(svgContainer, yun, shan, xiang) {
+		var pan = module.exports.getPan(yun, true);
 
         for(var x = 0; x<=450; x+= 150){
         	for(var y =0; y<=450; y+= 150){
@@ -110,9 +105,9 @@ module.exports = {
                         .attr('stroke-width', 3);
         	}
         }
-        drawPan(svgContainer, pan, false, 36, 150/2 - 18, 150/2 + 18/2, 'black');
-        drawShan(svgContainer, shan, pan);
-        drawXiang(svgContainer, xiang, pan);
+        module.exports.drawPan(svgContainer, pan, false, 36, 150/2 - 18, 150/2 + 18/2, 'black');
+        module.exports.drawShan(svgContainer, shan, pan);
+        module.exports.drawXiang(svgContainer, xiang, pan);
 	},
 
 	drawPan: function(svgContainer, pan, useNumber, fontSize, xOffset, yOffset, color){
@@ -139,7 +134,7 @@ module.exports = {
 		var shunni = getShunNi(shan, mountain_star);
 		var shan_pan = getPan(mountain_star, shunni);
 
-		drawPan(svgContainer, shan_pan, true, 28, 150/4, 150/4, 'black');
+		module.exports.drawPan(svgContainer, shan_pan, true, 28, 150/4, 150/4, 'black');
 	},
 
 	drawXiang: function(svgContainer, xiang, pan) {
@@ -148,6 +143,6 @@ module.exports = {
 		var shunni = getShunNi(xiang, face_star);
 		var xiang_pan = getPan(face_star, shunni);
 
-		drawPan(svgContainer, xiang_pan, true, 28,150 *0.75 - 18/2, 150/4, 'black');
+		module.exports.drawPan(svgContainer, xiang_pan, true, 28,150 *0.75 - 18/2, 150/4, 'black');
 	}
 };
